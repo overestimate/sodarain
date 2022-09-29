@@ -1,0 +1,43 @@
+version: 1.0.{build}
+image: macOS-Monterey
+build_script:
+- sh: >-
+    #!/bin/bash -e
+
+    echo "start haxx build"
+
+    cp ./executables/ldid/ldid ./haxx/ldid
+
+    cd ./haxx
+
+    make
+    
+    cd ../
+
+    echo "move stuff for vending"
+    
+    mkdir vendor && mkdir vendor/files && mkdir
+    
+    cp ./haxx/haxx ./vendor/files/haxx && cp ./haxx/launchd ./vendor/files/launchd_haxx
+    
+    cp ./executables/taurine/amfidebilitate ./vendor/files/amfidebilitate
+
+    cp ./executables/pogohelper/bootstrap.tar ./vendor/files && cp ./executables/pogohelper/PogoHelper ./vendor/files
+
+    cp ./executables/pogohelper/sileo.deb ./vendor/files
+
+    cp ./install_part*.sh ./vendor
+
+    cp ./break.sh ./vendor/files
+    
+    
+    echo "package into file"
+    
+    cd ./vendor
+
+    zip -9 -r -q vendor.zip *
+    
+    mv ./vendor.zip ../
+artifacts:
+- path: ./vendor.zip
+  name: vendor_archive

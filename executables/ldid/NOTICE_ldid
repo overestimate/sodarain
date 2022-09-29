@@ -1,0 +1,3 @@
+This copy of ldid is here only to assist in the build process. I'm still trying to work out how to get it as a tool outside the repo
+for AppVeyor, and it works as-is right now so I (let's be honest) might not end up fixing it. This, however, means I am actively breaching
+the license of ldid as it gets distributed with the repo. Sorry for that.

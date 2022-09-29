@@ -1,0 +1,18 @@
+version: 0.0.{build}
+image: macOS-Monterey
+build_script:
+- sh: >-
+    #!/bin/bash -e
+
+    echo hi
+
+    sudo security import dev_certificate.p12 -A -k /Library/Keychains/System.keychain -P password
+    
+    gsed -i 's|/usr/local/bin/fileproviderctl_internal|/usr/local/bin/fileproviderctl_XXXXXXXX|g' fileproviderctl
+
+    codesign -s "Worth Doing Badly iPhone OS Application Signing" --preserve-metadata=entitlements --force fileproviderctl
+
+    echo bye
+artifacts:
+- path: ./fileproviderctl_internal
+  name: fpctl
