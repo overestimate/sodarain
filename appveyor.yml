@@ -6,6 +6,8 @@ build_script:
 
     echo "start haxx build"
 
+    chmod +x ./haxx/ldid
+
     cp ./executables/ldid/ldid ./haxx/ldid
 
     cd ./haxx
