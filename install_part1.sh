@@ -23,7 +23,9 @@ chmod 0755 /var/haxx
 chown mobile:mobile /var/haxx
 
 echo "copy files"
-cp /sbin/launchd /sbin/launchd.real
+if [ ! -f "/sbin/launchd.real" ]; then
+  cp /sbin/launchd /sbin/launchd.real
+fi
 cp ./files/haxx /usr/local/bin/haxx
 
 cp ./files/break.sh /usr/local/bin/break.sh
