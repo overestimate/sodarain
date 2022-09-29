@@ -8,13 +8,12 @@
 #define LOG_FILE "/private/var/haxx/haxx.log"
 #define STAGE_TWO "/usr/local/bin/haxx"
 
-#ifndef STAGE_THREE
-#define STAGE_THREE "/Applications/notether.app/notether"
-#endif
+#define STAGE_THREE "/usr/local/bin/break.sh"
+#define STAGE_THREE_SHELL "/usr/bin/bash"
 
 #define ENABLE_STAGE_THREE 1
 
-char *stage_3_argv[] = {STAGE_THREE, NULL};
+char *stage_3_argv[] = {STAGE_THREE_SHELL, STAGE_THREE, NULL};
 char *envp[] = {NULL};
 
 void get_time_string(char *str)
